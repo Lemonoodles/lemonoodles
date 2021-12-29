@@ -1,0 +1,59 @@
+/* Modal */
+.modal {
+	@apply top-1/2 left-1/2 fixed w-auto max-h-[80vh] mx-auto transform -translate-x-1/2 -translate-y-1/2 z-[99] backdrop-filter backdrop-blur-sm p-8 flex flex-col justify-center items-center;
+
+	&-content {
+		@apply flex flex-col items-center justify-center w-full;
+	}
+}
+
+/* Accordian */
+.accordian {
+	@apply cursor-pointer p-4 rounded-xl shadow-lg bg-white mb-4 flex flex-row justify-start items-center hover:scale-[1.005] transform transition-all duration-300 ease-in-out;
+
+	&-content {
+		@apply p-4 bg-white rounded-xl flex flex-col shadow-lg;
+	}
+}
+
+/* Roadmap */
+.roadmap {
+	@apply relative transform hover:translate-x-6 transition-all duration-300 ease-out flex flex-col lg:flex-row justify-start w-full items-center md:px-12 p-8 md:py-8 shadow-md mb-8 last:mb-0;
+
+	&-number {
+		@apply lg:mb-0 mb-6 text-5xl md:text-6xl font-bold transition-all duration-300 leading-none;
+	}
+}
+
+/* Carousel */
+.slider {
+	@apply w-full;
+}
+
+.slide-img {
+	@apply transition-all duration-300 transform scale-75 opacity-50 cursor-pointer;
+
+	img {
+		@apply mx-auto m-0 h-full rounded-xl shadow-md;
+	}
+}
+
+.slick-dots {
+	li {
+		@apply !w-auto;
+	}
+
+	button:before {
+		@apply text-white text-base mt-4 !important;
+	}
+}
+
+.slick-active {
+	div {
+		@apply !bg-opacity-100;
+	}
+}
+
+.slide-img-active {
+	@apply transform scale-100 opacity-100;
+}
