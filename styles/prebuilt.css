@@ -69,3 +69,23 @@
 .slide-img-active {
 	@apply transform scale-100 opacity-100;
 }
+
+.arrow {
+	@apply cursor-pointer absolute top-[45%] z-10 text-6xl;
+
+	svg {
+		@apply transition-all duration-300 text-white;
+
+		&:hover {
+			@apply text-green-500;
+		}
+	}
+
+	&.prev {
+		@apply left-2;
+	}
+
+	&.next {
+		@apply right-2;
+	}
+}
