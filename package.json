@@ -1,5 +1,5 @@
 {
-	"name": "next-template",
+	"name": "lemon-doodles",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",

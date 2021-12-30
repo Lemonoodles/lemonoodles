@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: "Skrapbook";
+	src: url("/fonts/skrapbook.ttf");
+}
+
 html {
 	@apply scroll-smooth;
 
@@ -24,7 +29,7 @@ html {
 }
 
 body {
-	@apply bg-gray-900 overflow-x-hidden h-[300vh];
+	@apply bg-gray-100 overflow-x-hidden;
 }
 
 p {
@@ -33,4 +38,8 @@ p {
 
 .flex-center {
 	@apply flex justify-center items-center;
+}
+
+.shadow {
+	@apply absolute z-0 top-[0.35em] rounded-full left-0 w-full h-full border-solid border-2 border-black;
 }

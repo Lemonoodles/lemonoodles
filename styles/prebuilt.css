@@ -1,3 +1,8 @@
+/* Button */
+.btn {
+	@apply relative z-10 transition-all duration-300 px-4 py-2 rounded-full !mb-0 bg-mint border-solid border-black border-2 text-black font-skrap text-xl shadow-green-600;
+}
+
 /* Modal */
 .modal {
 	@apply top-1/2 left-1/2 fixed w-auto max-h-[80vh] mx-auto transform -translate-x-1/2 -translate-y-1/2 z-[99] backdrop-filter backdrop-blur-sm p-8 flex flex-col justify-center items-center;
