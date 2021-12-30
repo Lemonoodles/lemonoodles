@@ -13,6 +13,7 @@ module.exports = {
 				salmon: "#F5C5DD",
 				lemon: "#F5E18A",
 				bblue: "#97B9F9",
+				dblue: "#7793c9",
 			},
 			fontFamily: {
 				mont: ["Montserrat", "sans-serif"],

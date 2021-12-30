@@ -4,14 +4,14 @@ export default function Button({ link, text }) {
 	return (
 		<>
 			{link ? (
-				<div className='relative -mt-[0.3em]'>
+				<div className='relative -mt-[0.3em] hover:scale-105 transition-all duration-300'>
 					<span className='bg-green-600 shadow'></span>
 					<Link href={link} passHref className='btn'>
 						{text}
 					</Link>
 				</div>
 			) : (
-				<div className='relative -mt-[0.3em]'>
+				<div className='relative -mt-[0.3em] hover:scale-105 transition-all duration-300'>
 					<span className='bg-green-600 shadow'></span>
 					<button className='btn'>{text}</button>
 				</div>

@@ -21,7 +21,7 @@ export default function Nav({ links, position }) {
 						<div className='flex flex-col'>
 							{links.map((link) => (
 								<a
-									className='hover:text-red-500 text-white transition-all duration-300'
+									className='nav-link'
 									href={`#${link.toLowerCase()}`}
 									key={link}
 								>
@@ -37,12 +37,12 @@ export default function Nav({ links, position }) {
 					<div className='bg-yellow-500 shadow'></div>
 					<div className='md:grid bg-lemon relative items-center hidden w-full grid-cols-3 gap-4 px-6 py-4 border-2 border-black border-solid rounded-full'>
 						<div>
-							<span className='font-skrap text-4xl'>Lemon Doodles</span>
+							<span className='font-skrap text-4xl'>LEMON NOODLES</span>
 						</div>
 						<div className='flex-center flex-row gap-4'>
 							{links.map((link) => (
 								<a
-									className='font-skrap text-2xl text-black transition-all duration-300'
+									className='nav-link'
 									href={`#${link.toLowerCase()}`}
 									key={link}
 								>

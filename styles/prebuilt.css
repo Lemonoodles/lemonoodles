@@ -30,6 +30,13 @@
 	}
 }
 
+/* Team */
+.member {
+	img {
+		@apply rounded-xl border-solid border-4 border-black !important;
+	}
+}
+
 /* Carousel */
 .slider {
 	@apply w-full;
@@ -39,23 +46,23 @@
 	@apply transition-all duration-300 transform scale-75 opacity-50 cursor-pointer;
 
 	img {
-		@apply mx-auto m-0 h-full rounded-xl shadow-md;
+		@apply mx-auto m-0 h-full rounded-xl border-solid border-black border-4 !important;
 	}
 }
 
 .slick-dots {
 	li {
 		@apply !w-auto;
+
+		&.slick-active {
+			div {
+				@apply bg-opacity-100 bg-lemon;
+			}
+		}
 	}
 
 	button:before {
 		@apply text-white text-base mt-4 !important;
-	}
-}
-
-.slick-active {
-	div {
-		@apply !bg-opacity-100;
 	}
 }
 

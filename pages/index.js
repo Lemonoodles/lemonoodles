@@ -4,6 +4,8 @@ import Nav from "../components/prebuilt/Nav";
 import Image from "next/image";
 import doodle from "../public/doodle.png";
 import Button from "../components/prebuilt/Button";
+import Carousel from "../components/prebuilt/Carousel";
+import Team from "../components/Team";
 
 export default function Home() {
 	return (
@@ -17,7 +19,7 @@ export default function Home() {
 							<Image src={doodle} alt='Lemon Doodle' />
 						</div>
 						<h1 className='font-skrap mb-6 text-6xl text-black'>
-							LEMON DOODLES
+							LEMON NOODLES
 						</h1>
 						<p className='mb-8'>
 							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni a
@@ -46,9 +48,7 @@ export default function Home() {
 					</div>
 					<div className='flex-center lg:text-left flex-col text-center'>
 						<div>
-							<h2 className='font-skrap mb-8 text-6xl text-black'>
-								THE ORIGIN
-							</h2>
+							<h2>THE ORIGIN</h2>
 							<p>
 								On a distant lemon shaped planet far far away from earth there
 								was a giant lemon tree with little lemon inhabitants.
@@ -122,6 +122,23 @@ export default function Home() {
 					</div>
 				</div>
 			</Wrapper>
+
+			<Wrapper>
+				<h2 className='text-center'>TYPES OF LEMONS</h2>
+				<Carousel />
+			</Wrapper>
+
+			<Wrapper className='bg-salmon'>
+				<Team />
+			</Wrapper>
+
+			<footer className='flex-center bg-salmon flex-row px-2 py-4'>
+				<div>
+					<p className='font-skrap text-xl uppercase'>
+						All rights reserved Lemon Noodles
+					</p>
+				</div>
+			</footer>
 		</>
 	);
 }

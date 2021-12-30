@@ -12,24 +12,32 @@ html {
 	@apply scroll-smooth;
 
 	::-webkit-scrollbar {
-		@apply w-2;
+		@apply w-4;
 	}
 
 	::-webkit-scrollbar-track {
-		@apply bg-transparent;
+		@apply bg-dblue;
 	}
 
 	::-webkit-scrollbar-thumb {
-		@apply bg-white;
+		@apply bg-mint border-solid border-2 border-black;
 	}
 
 	::-webkit-scrollbar-thumb:hover {
-		@apply bg-gray-200;
+		@apply bg-salmon transition-all duration-300;
 	}
 }
 
 body {
 	@apply bg-bblue overflow-x-hidden;
+}
+
+h2 {
+	@apply font-skrap mb-12 md:text-6xl text-5xl text-black uppercase;
+}
+
+h3 {
+	@apply font-skrap mb-2 md:text-5xl text-4xl text-black uppercase;
 }
 
 p {
@@ -41,9 +49,13 @@ p {
 }
 
 .shadow {
-	@apply absolute z-0 top-[0.35em] rounded-full left-0 w-full h-full border-solid border-2 border-black;
+	@apply absolute z-0 transition-all duration-300 top-[0.35em] rounded-full left-0 w-full h-full border-solid border-2 border-black;
 }
 
 .img img {
 	@apply rounded-3xl border-solid border-black border-4 !important;
+}
+
+.nav-link {
+	@apply text-black hover:text-mint transition-all duration-300 uppercase font-skrap lg:text-2xl text-xl;
 }
