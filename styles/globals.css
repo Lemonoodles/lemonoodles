@@ -29,11 +29,11 @@ html {
 }
 
 body {
-	@apply bg-gray-100 overflow-x-hidden;
+	@apply bg-bblue overflow-x-hidden;
 }
 
 p {
-	@apply max-w-[75ch] mb-4 last:mb-0;
+	@apply max-w-[75ch] mb-4 last:mb-0 font-mont font-semibold;
 }
 
 .flex-center {
@@ -42,4 +42,8 @@ p {
 
 .shadow {
 	@apply absolute z-0 top-[0.35em] rounded-full left-0 w-full h-full border-solid border-2 border-black;
+}
+
+.img img {
+	@apply rounded-3xl border-solid border-black border-4 !important;
 }
