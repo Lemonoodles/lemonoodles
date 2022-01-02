@@ -6,7 +6,7 @@ const Member = ({ img, name, position }) => {
 	return (
 		<>
 			<div className='flex-center flex-col'>
-				<div className='member'>
+				<div className='member lg:w-3/4'>
 					<Image src={img} alt={name} />
 				</div>
 				<h3>{name}</h3>
@@ -19,7 +19,7 @@ const Member = ({ img, name, position }) => {
 export default function Team() {
 	return (
 		<>
-			<div className='lg:grid-cols-3 md:grid-cols-2 grid gap-12'>
+			<div className='lg:grid-cols-3 sm:grid-cols-2 grid gap-8'>
 				<Member name='Zayne' position='Web Dev' img={nft} />
 				<Member name='Zayne' position='Web Dev' img={nft} />
 				<Member name='Zayne' position='Web Dev' img={nft} />

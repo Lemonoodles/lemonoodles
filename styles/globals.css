@@ -33,7 +33,7 @@ body {
 }
 
 h2 {
-	@apply font-skrap mb-12 md:text-6xl text-5xl text-black uppercase;
+	@apply font-skrap mb-12 md:text-7xl text-5xl text-black uppercase;
 }
 
 h3 {
@@ -49,7 +49,7 @@ p {
 }
 
 .shadow {
-	@apply absolute z-0 transition-all duration-300 top-[0.35em] rounded-full left-0 w-full h-full border-solid border-2 border-black;
+	@apply absolute z-0 transition-all duration-300 top-[0.35em] rounded-xl left-0 w-full h-full border-solid border-2 border-black;
 }
 
 .img img {

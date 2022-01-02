@@ -45,7 +45,7 @@ export default function Carousel() {
 		autoplay: true,
 		autoplaySpeed: 2000,
 		arrows: false,
-		slidesToShow: 5,
+		slidesToShow: 3,
 		centerMode: true,
 		centerPadding: 0,
 		swipeToSlide: true,
@@ -96,10 +96,10 @@ export default function Carousel() {
 							key={`0${index}`}
 						>
 							<Image src={img.img} alt={img.rarity} layout='responsive' />
-							<h3 className='font-skrap my-2 text-5xl text-center uppercase'>
+							{/* <h3 className='font-skrap my-2 text-5xl text-center uppercase'>
 								Type
-							</h3>
-							<p className='text-center'>{img.rarity}</p>
+							</h3> */}
+							{/* <p className='text-center'>{img.rarity}</p> */}
 						</div>
 					))}
 				</Slider>

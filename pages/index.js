@@ -11,27 +11,50 @@ export default function Home() {
 	return (
 		<>
 			{/* <Meta title='Title' desc='Descrition' /> */}
-			<Nav links={["Mint", "About", "Types", "Team"]} />
-			<Wrapper>
-				<div className='flex-center flex-col text-center h-[65vh]'>
-					<div>
-						<div className='img lg:w-1/2 mx-auto mb-6'>
+			<Nav position='fixed' />
+			<div className='container'>
+				<div className='md:grid-cols-2 grid h-screen gap-12'>
+					<div className='flex-center flex-col'>
+						<div className='img lg:w-3/4 mx-aut'>
 							<Image src={doodle} alt='Lemon Doodle' />
 						</div>
-						<h1 className='font-skrap mb-6 text-6xl text-black'>
-							LEMON NOODLES
-						</h1>
-						<p className='mb-8'>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni a
-							architecto alias? Et rem voluptatibus eos adipisci dolores beatae,
-							deserunt assumenda, magnam labore veritatis culpa?
-						</p>
-						<Button text='mint now' />
+					</div>
+					<div className='flex-center flex-col'>
+						<div>
+							<h1 className='font-skrap mb-6 text-6xl text-black'>
+								LEMON NOODLES
+							</h1>
+							<p className='mb-8'>
+								Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
+								a architecto alias? Et rem voluptatibus eos adipisci dolores
+								beatae, deserunt assumenda, magnam labore veritatis culpa?
+							</p>
+							<Button text='mint now' />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<Wrapper>
+				<div className='lg:grid-cols-2 grid gap-8'>
+					<div className='flex-center flex-col'>
+						<div>
+							<h2 className='text-left'>Project Description</h2>
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+								Adipisci, optio nostrum obcaecati nobis deserunt sit quaerat
+								quam deleniti dolore ut facere ratione? Necessitatibus, aperiam
+								expedita.
+							</p>
+						</div>
+					</div>
+					<div className='flex-center'>
+						<Carousel />
 					</div>
 				</div>
 			</Wrapper>
 
-			<Wrapper className='bg-lemon'>
+			<Wrapper>
 				<div className='lg:grid-cols-2 grid gap-20 mt-16'>
 					<div className='img flex-center lg:flex-col flex-col mx-auto'>
 						<div className='lg:w-1/2'>
@@ -46,6 +69,7 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
+
 					<div className='flex-center lg:text-left flex-col text-center'>
 						<div>
 							<h2>THE ORIGIN</h2>
@@ -123,19 +147,18 @@ export default function Home() {
 				</div>
 			</Wrapper>
 
-			<Wrapper>
-				<h2 className='text-center'>TYPES OF LEMONS</h2>
-				<Carousel />
-			</Wrapper>
-
-			<Wrapper className='bg-salmon'>
+			<Wrapper className='bg-lemon'>
 				<Team />
 			</Wrapper>
 
-			<footer className='flex-center bg-salmon flex-row px-2 py-4'>
-				<div>
+			<footer className='flex-center bg-lemon flex-row px-2 py-4'>
+				<div className='text-center'>
 					<p className='font-skrap text-xl uppercase'>
-						All rights reserved Lemon Noodles
+						Lemonoodles is marked with CCO 1.0
+					</p>
+					<p className='text-xs'>
+						Note: The art for lemonoodles is completely our own and is only
+						inspired by and not affiliated with Doodles or Little Lemon Friends
 					</p>
 				</div>
 			</footer>
