@@ -28,6 +28,12 @@ html {
 	}
 }
 
+.lemon {
+	@apply bg-repeat w-screen h-screen fixed z-[-1] opacity-25 pointer-events-none;
+	background-image: url("/lemon.png");
+	background-size: 15%;
+}
+
 body {
 	@apply bg-bblue overflow-x-hidden;
 }
@@ -41,7 +47,7 @@ h3 {
 }
 
 p {
-	@apply max-w-[75ch] mb-4 last:mb-0 font-mont font-semibold;
+	@apply max-w-[75ch] mb-4 last:mb-0 font-mont font-semibold text-lg text-black;
 }
 
 .flex-center {

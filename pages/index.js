@@ -11,6 +11,7 @@ export default function Home() {
 	return (
 		<>
 			{/* <Meta title='Title' desc='Descrition' /> */}
+			<div className='lemon'></div>
 			<Nav position='fixed' />
 			<div className='container'>
 				<div className='md:grid-cols-2 grid h-screen gap-12'>
