@@ -8,15 +8,15 @@ export default function Origin() {
 	return (
 		<>
 			<div className='lg:grid-cols-2 grid gap-20 mt-16'>
-				<div className='img flex-center lg:flex-col flex-col mx-auto'>
-					<div className='lg:w-1/2'>
-						<div className='-rotate-6 lg:m-0 -mt-24 -mr-12 transform'>
+				<div className='img flex-center lg:flex-col lg:row-start-auto flex-col row-start-2 mx-auto'>
+					<div className='w-1/2'>
+						<div className='-rotate-6 lg:m-0 lg:-mr-12 lg:-mt-24 transform'>
 							<Image src={hooded} alt='Lemon Doodle' />
 						</div>
-						<div className='-rotate-12 transform'>
+						<div className='-rotate-12 lg:-mt-12 transform'>
 							<Image src={devil} alt='Lemon Doodle' />
 						</div>
-						<div className='rotate-12 lg:m-0 mt-24 -ml-12'>
+						<div className='rotate-12 lg:m-0 lg:-ml-12 lg:-mt-18'>
 							<Image src={astro} alt='Lemon Doodle' />
 						</div>
 					</div>

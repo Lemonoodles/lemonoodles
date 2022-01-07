@@ -30,7 +30,7 @@ export default function Team() {
 				<Member name='astrolemon' position='Co-Creator' img={astro} />
 				<Member name='Phantom' position='Web Dev' img={phantom} />
 				<Member name='DisguisedCat' position='Dev' img={cat} />
-				<Member name='DarthLemonder' position='Community Builder' img={darth} />
+				<Member name='E-lemonator' position='Community Builder' img={darth} />
 			</div>
 		</>
 	);

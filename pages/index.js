@@ -22,10 +22,10 @@ export default function Home() {
 			/>
 			<Lemonbg />
 			<Nav position='fixed' />
-			<div className='container'>
-				<div className='md:grid-cols-2 grid h-screen gap-12'>
+			<div className='md:py-0 container px-8 py-32'>
+				<div className='md:grid-cols-2 md:h-screen grid gap-12'>
 					<div className='flex-center flex-col'>
-						<div className='img lg:w-3/4 mx-aut'>
+						<div className='img w-3/4 mx-auto'>
 							<Image src={doodle} alt='Lemon Doodle' />
 						</div>
 					</div>

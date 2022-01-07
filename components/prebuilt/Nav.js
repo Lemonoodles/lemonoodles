@@ -9,7 +9,7 @@ import logo from "../../public/logo.png";
 export default function Nav({ links, position }) {
 	return (
 		<>
-			{/* Mobile Nav */}
+			{/* Mobile Nav
 			<div className='top-4 left-4 fixed z-50'>
 				<div className='md:hidden block text-4xl'>
 					<Modal
@@ -34,7 +34,7 @@ export default function Nav({ links, position }) {
 						</div>
 					</Modal>
 				</div>
-			</div>
+			</div> */}
 
 			{/* Desktop Nav */}
 			<div
