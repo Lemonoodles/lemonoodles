@@ -25,7 +25,7 @@ export default function Social() {
 		{
 			name: "twitterLink",
 			icon: <FaTwitter />,
-			url: "",
+			url: "https://twitter.com/lemonoodlesnft",
 		},
 		{
 			name: "instaLink",
