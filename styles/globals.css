@@ -65,3 +65,8 @@ p {
 .nav-link {
 	@apply text-black hover:text-mint transition-all duration-300 uppercase font-skrap lg:text-2xl text-xl;
 }
+
+.social svg {
+	@apply stroke-black;
+	stroke-width: 1.5rem;
+}

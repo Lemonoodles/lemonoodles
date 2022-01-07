@@ -8,14 +8,17 @@ export default function Accordian({ children, title }) {
 	return (
 		<>
 			<div className={`relative w-full mx-auto mb-5 last:mb-0`}>
-				<div className='accordian' onClick={() => setIsOpen(!isOpen)}>
-					<h3 className='text-xl font-bold'>{title}</h3>
-					<button
-						className='right-5 absolute'
-						onClick={() => setIsOpen(!isOpen)}
-					>
-						{isOpen ? <FaMinus /> : <FaPlus />}
-					</button>
+				<div className='relative'>
+					<div className='bg-yellow-500 shadow'></div>
+					<div className='accordian' onClick={() => setIsOpen(!isOpen)}>
+						<h3 className='mb-0 text-xl font-bold'>{title}</h3>
+						<button
+							className='right-5 absolute'
+							onClick={() => setIsOpen(!isOpen)}
+						>
+							{isOpen ? <FaMinus /> : <FaPlus />}
+						</button>
+					</div>
 				</div>
 				<AnimatePresence>
 					{isOpen && (
@@ -23,9 +26,10 @@ export default function Accordian({ children, title }) {
 							initial={{ opacity: 0, y: -5 }}
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -5 }}
-							className='accordian-content'
+							className='relative'
 						>
-							{children}
+							<div className='bg-yellow-500 shadow'></div>
+							<div className='accordian-content'>{children}</div>
 						</motion.div>
 					)}
 				</AnimatePresence>

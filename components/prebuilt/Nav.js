@@ -1,8 +1,10 @@
 import { BiMenu } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import Modal from "./Modal";
+import Image from "next/image";
 import Button from "./Button";
 import Social from "./Social";
+import logo from "../../public/logo.png";
 
 export default function Nav({ links, position }) {
 	return (
@@ -38,14 +40,15 @@ export default function Nav({ links, position }) {
 			<div
 				className={`${
 					position ? position : "relative"
-				} top-0 left-0 md:flex hidden gap-4 w-full z-50 p-4`}
+				} top-0 left-0 md:flex hidden gap-4 w-full justify-between z-50 py-4 px-6`}
 			>
-				<div className='relative z-10 w-full'>
+				<div className='flex-center max-w-[15rem]'>
+					<Image src={logo} alt='LemonNoodles' />
+					{/* <span className='font-skrap mb-0 text-4xl'>LEMON NOODLES</span> */}
+				</div>
+				<div className='relative z-10'>
 					<div className='bg-yellow-500 shadow'></div>
 					<div className='bg-lemon rounded-xl relative z-10 flex flex-row justify-between w-full h-full p-4 border-2 border-black border-solid'>
-						<div className='flex-center'>
-							<span className='font-skrap mb-0 text-4xl'>LEMON NOODLES</span>
-						</div>
 						{links && (
 							<>
 								{links.map((link) => (
@@ -61,9 +64,9 @@ export default function Nav({ links, position }) {
 						)}
 						<div className='flex-center flex-row gap-4'>
 							<Social />
-							<div className='flex flex-col items-end justify-center'>
+							{/* <div className='flex flex-col items-end justify-center'>
 								<Button text='Connect Wallet' />
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>

@@ -12,7 +12,7 @@ const SocialIcon = ({ icon, url }) => {
 				href={url}
 				rel='noreferrer'
 				target='_blank'
-				className='hover:text-red-500 transition-all duration-300'
+				className='hover:text-mint hover:scale-110 hover:rotate-6 social transition-all duration-300'
 			>
 				{icon}
 			</a>
@@ -25,7 +25,7 @@ export default function Social() {
 		{
 			name: "twitterLink",
 			icon: <FaTwitter />,
-			url: "#",
+			url: "",
 		},
 		{
 			name: "instaLink",
@@ -35,7 +35,7 @@ export default function Social() {
 		{
 			name: "discordLink",
 			icon: <FaDiscord />,
-			url: "",
+			url: "https://discord.gg/KkgTGbDK",
 		},
 		{
 			name: "openseaLink",
@@ -64,7 +64,7 @@ export default function Social() {
 
 	return (
 		<>
-			<div className='flex flex-row items-center justify-center gap-4 text-3xl text-black'>
+			<div className='text-bblue stroke-black flex flex-row items-center justify-center gap-4 text-4xl stroke-2'>
 				{socials.map((social) => (
 					<>
 						{social.url && (

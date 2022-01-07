@@ -1,6 +1,5 @@
-import React from "react";
 import Head from "next/head";
-import banner from "../public/banner.jpg";
+import banner from "../public/logo.png";
 
 export default function Meta(props) {
 	return (
