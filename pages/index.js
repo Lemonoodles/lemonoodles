@@ -36,7 +36,7 @@ export default function Home() {
 								LEMON NOODLES
 							</h1> */}
 							<p className='mx-auto text-2xl text-center'>
-								7,777 NFTs - .035 ETH
+								7,777 NFTs - 0.035 ETH
 							</p>
 							<Button text='MINTING SOON' />
 						</div>

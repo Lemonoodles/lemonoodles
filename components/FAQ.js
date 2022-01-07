@@ -14,10 +14,7 @@ export default function FAQ() {
 						by and not affiliated with Doodles or Little Lemon Friends.
 					</p>
 				</Accordian>
-				<Accordian
-					title='How many Lemonoodles are there?
-'
-				>
+				<Accordian title='How many Lemonoodles are there?'>
 					<p>7,777</p>
 				</Accordian>
 				<Accordian title='Will there be rarity?'>
@@ -35,16 +32,17 @@ export default function FAQ() {
 				</Accordian>
 				<Accordian title='Will there be a whitelist?'>
 					<p>
-						Yes! To reward the community and save everyone gas we will be
-						opening the pre-sale to holders of Doodles and Little Lemon friends
-						and allocating 500 WL to active members in the Discord!
+						Yes! To reward the communities of our inspiration projects and save
+						everyone gas we will be opening the pre-sale to holders of Doodles
+						and Little Lemon friends.
 					</p>
 				</Accordian>
 				<Accordian title='Wen Mint?'>
 					<p>
-						Official time will be announced soon! Our Pre-sale will happen
-						sometime between January 9th and 11th and will be open for 24 hours.
-						After such time the Public sale will commence
+						Official time will be announced soon! Our Pre-sale will start first
+						with the public sale opening within 24 hours. Could be 1 hour after
+						or could be 23 hours after. Stick around the Discord to find out
+						because that's where we're announcing it!
 					</p>
 				</Accordian>
 				<Accordian title='Will there be a reveal?'>
@@ -57,17 +55,14 @@ export default function FAQ() {
 				</Accordian>
 				<Accordian title="What's the mint limit per transaction/wallet for Public sale?">
 					<p>
-						Public sale: 10 mints per transaction with a max of 20 Lemonoodles
-						per wallet. All remaining supply after Pre-sale will be available to
-						mint during the Public sale.
+						Public sale: Max of 20 Lemonoodles per wallet. All remaining supply
+						after Pre-sale will be available to mint during the Public sale.
 					</p>
 				</Accordian>
 				<Accordian title="How do I know I'm on the Whitelist?">
 					<p>
 						If you are a holder of a Doodle or Little Lemon Friend then you will
-						be able to freely mint! Otherwise, you will need a Whitelist role in
-						the Discord and to submit your wallet address in the Whitelist
-						Address channel.
+						be able to freely mint when the pre-sale opens!
 					</p>
 				</Accordian>
 				<Accordian title='Is there a launch roadmap?'>
@@ -81,22 +76,15 @@ export default function FAQ() {
 						of votes in the verified Lemonoodles polls channel.
 					</p>
 				</Accordian>
-				<Accordian title='What rights do I have to my Lemonoodles?'>
+				<Accordian title='What commercial rights do I have to my Lemonoodles?'>
 					<p>
-						You are free to do whatever you want with your Lemonoodle!!
-						Lemonoodles are in the Public Domain. To the extent possible under
-						law, we have waived all copyright and related or neighboring rights
-						to Lemonoodles. We believe that by releasing the works under CC0 we
-						allow the community to freely build upon, enhance and reuse the
-						works for any purposes without fear or restriction under copyright
-						and database law
-					</p>
-				</Accordian>
-				<Accordian title='What are the plans for the community wallet?'>
-					<p>
-						A large portion of the initial mint proceeds and secondary royalties
-						will be used to support the project's initiatives to be voted on by
-						the community!
+						You are free to do whatever you want with your Lemonoodle!! The IP
+						is yours!! Lemonoodles are in the Public Domain. To the extent
+						possible under law, we have waived all copyright and related or
+						neighboring rights to Lemonoodles. We believe that by releasing the
+						works under CC0 we allow the community to freely build upon, enhance
+						and reuse the works for any purposes without fear or restriction
+						under copyright and database law
 					</p>
 				</Accordian>
 			</div>

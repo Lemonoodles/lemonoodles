@@ -32,11 +32,11 @@ export default function Social() {
 			icon: <FaInstagram />,
 			url: "",
 		},
-		{
-			name: "discordLink",
-			icon: <FaDiscord />,
-			url: "https://discord.gg/KkgTGbDK",
-		},
+		// {
+		// 	name: "discordLink",
+		// 	icon: <FaDiscord />,
+		// 	url: "https://discord.gg/KkgTGbDK",
+		// },
 		{
 			name: "openseaLink",
 			icon: (
