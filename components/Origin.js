@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import devil from "../public/devil.png";
+import devil from "../public/ramen.png";
 import hooded from "../public/hooded.png";
-import astro from "../public/astronaut.png";
+import astro from "../public/raincoat.png";
 
 export default function Origin() {
 	return (

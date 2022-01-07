@@ -6,17 +6,15 @@ import "slick-carousel/slick/slick-theme.css";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
 import one from "../../public/doodle.png";
-import two from "../../public/devil.png";
 import three from "../../public/cape.png";
-import four from "../../public/astronaut.png";
-import five from "../../public/deadpull.png";
+import four from "../../public/ramen.png";
+import five from "../../public/raincoat.png";
 import six from "../../public/hooded.png";
-import seven from "../../public/radioactive.png";
+import seven from "../../public/construction.png";
 
 export default function Carousel() {
 	const images = [
 		{ img: one, rarity: "Ultra Rare" },
-		{ img: two, rarity: "Ultra Rare" },
 		{ img: three, rarity: "Ultra Rare" },
 		{ img: four, rarity: "Ultra Rare" },
 		{ img: five, rarity: "Ultra Rare" },
