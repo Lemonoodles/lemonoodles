@@ -11,6 +11,8 @@ import Origin from "../components/Origin";
 import Lemonbg from "../components/Lemonbg";
 import Footer from "../components/Footer";
 
+import logo from "../public/logo.png";
+
 export default function Home() {
 	return (
 		<>
@@ -29,9 +31,10 @@ export default function Home() {
 					</div>
 					<div className='flex-center flex-col'>
 						<div>
-							<h1 className='font-skrap mb-6 text-6xl text-black'>
+							<Image src={logo} alt='Lemon Noodles NFT' />
+							{/* <h1 className='font-skrap mb-6 text-6xl text-black'>
 								LEMON NOODLES
-							</h1>
+							</h1> */}
 							<p className='mx-auto text-2xl text-center'>
 								7,777 NFTs - .035 ETH
 							</p>
