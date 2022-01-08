@@ -3,7 +3,7 @@ import Wrapper from "../components/prebuilt/Wrapper";
 import Nav from "../components/prebuilt/Nav";
 import Image from "next/image";
 import Button from "../components/prebuilt/Button";
-// import Team from "../components/Team";
+import Team from "../components/Team";
 import FAQ from "../components/FAQ";
 import Project from "../components/Project";
 import Origin from "../components/Origin";
@@ -52,9 +52,9 @@ export default function Home() {
 				<Origin />
 			</Wrapper>
 
-			{/* <Wrapper className='bg-lemon'>
+			<Wrapper className=''>
 				<Team />
-			</Wrapper> */}
+			</Wrapper>
 
 			<Wrapper className='bg-mint'>
 				<FAQ />

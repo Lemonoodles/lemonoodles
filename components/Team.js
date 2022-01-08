@@ -1,11 +1,12 @@
 import Image from "next/image";
 
-import juice from "../public/team/juice.png";
-import lacroix from "../public/team/lacroix.png";
-import astro from "../public/team/astro.jpg";
-import phantom from "../public/team/phantom.png";
-import cat from "../public/team/cat.png";
-import darth from "../public/team/darth.png";
+import juice from "../public/team/juice.jpg";
+import lacroix from "../public/team/lacroix.jpg";
+import astro from "../public/team/astrolemon.jpg";
+import phantom from "../public/team/phantom.jpg";
+import cat from "../public/team/cat.jpg";
+import darth from "../public/team/lemonator.jpg";
+import lib from "../public/team/libertiye.jpg";
 
 const Member = ({ img, name, position }) => {
 	return (
@@ -30,6 +31,7 @@ export default function Team() {
 				<Member name='astrolemon' position='Co-Creator' img={astro} />
 				<Member name='Phantom' position='Web Dev' img={phantom} />
 				<Member name='DisguisedCat' position='Dev' img={cat} />
+				<Member name='Libertiye' position='Artist' img={lib} />
 				<Member name='E-lemonator' position='Community Builder' img={darth} />
 			</div>
 		</>
