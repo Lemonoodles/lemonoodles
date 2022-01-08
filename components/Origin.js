@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import horn from "../public/horn.jpg";
-import hooded from "../public/hooded.jpg";
-import egg from "../public/egg.jpg";
+import astro from "../public/astro.jpg";
+import antler from "../public/antler.jpg";
+import sailor from "../public/sailer.jpg";
 
 export default function Origin() {
 	return (
@@ -11,13 +11,13 @@ export default function Origin() {
 				<div className='img flex-center lg:flex-col lg:row-start-auto flex-col row-start-2 mx-auto'>
 					<div className='w-full'>
 						<div className='-rotate-6 lg:m-0 lg:-mr-12 lg:-mt-24 transform'>
-							<Image src={hooded} alt='Lemon Doodle' />
+							<Image src={astro} alt='Lemon Doodle' />
 						</div>
 						<div className='-rotate-12 lg:-mt-12 transform'>
-							<Image src={horn} alt='Lemon Doodle' />
+							<Image src={antler} alt='Lemon Doodle' />
 						</div>
 						<div className='rotate-12 lg:m-0 lg:-ml-12 lg:-mt-18'>
-							<Image src={egg} alt='Lemon Doodle' />
+							<Image src={sailor} alt='Lemon Doodle' />
 						</div>
 					</div>
 				</div>
