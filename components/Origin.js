@@ -1,15 +1,15 @@
 import Image from "next/image";
 
-import devil from "../public/ramen.png";
-import hooded from "../public/hooded.png";
-import astro from "../public/raincoat.png";
+import devil from "../public/ramen.jpg";
+import hooded from "../public/hooded.jpg";
+import astro from "../public/raincoat.jpg";
 
 export default function Origin() {
 	return (
 		<>
 			<div className='lg:grid-cols-2 grid gap-20 mt-16'>
 				<div className='img flex-center lg:flex-col lg:row-start-auto flex-col row-start-2 mx-auto'>
-					<div className='w-1/2'>
+					<div className='w-full'>
 						<div className='-rotate-6 lg:m-0 lg:-mr-12 lg:-mt-24 transform'>
 							<Image src={hooded} alt='Lemon Doodle' />
 						</div>

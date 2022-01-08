@@ -2,15 +2,15 @@ import Meta from "../components/Meta";
 import Wrapper from "../components/prebuilt/Wrapper";
 import Nav from "../components/prebuilt/Nav";
 import Image from "next/image";
-import doodle from "../public/doodle.png";
 import Button from "../components/prebuilt/Button";
-import Team from "../components/Team";
+// import Team from "../components/Team";
 import FAQ from "../components/FAQ";
 import Project from "../components/Project";
 import Origin from "../components/Origin";
 import Lemonbg from "../components/Lemonbg";
 import Footer from "../components/Footer";
 
+import doodle from "../public/doodle.jpg";
 import logo from "../public/logo.png";
 
 export default function Home() {
@@ -48,13 +48,13 @@ export default function Home() {
 				<Project />
 			</Wrapper>
 
-			<Wrapper>
+			<Wrapper className='bg-lemon'>
 				<Origin />
 			</Wrapper>
 
-			<Wrapper className='bg-lemon'>
+			{/* <Wrapper className='bg-lemon'>
 				<Team />
-			</Wrapper>
+			</Wrapper> */}
 
 			<Wrapper className='bg-mint'>
 				<FAQ />
