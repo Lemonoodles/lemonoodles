@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import devil from "../public/ramen.jpg";
+import horn from "../public/horn.jpg";
 import hooded from "../public/hooded.jpg";
-import astro from "../public/raincoat.jpg";
+import egg from "../public/egg.jpg";
 
 export default function Origin() {
 	return (
@@ -14,10 +14,10 @@ export default function Origin() {
 							<Image src={hooded} alt='Lemon Doodle' />
 						</div>
 						<div className='-rotate-12 lg:-mt-12 transform'>
-							<Image src={devil} alt='Lemon Doodle' />
+							<Image src={horn} alt='Lemon Doodle' />
 						</div>
 						<div className='rotate-12 lg:m-0 lg:-ml-12 lg:-mt-18'>
-							<Image src={astro} alt='Lemon Doodle' />
+							<Image src={egg} alt='Lemon Doodle' />
 						</div>
 					</div>
 				</div>

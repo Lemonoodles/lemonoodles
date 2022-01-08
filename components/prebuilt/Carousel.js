@@ -5,12 +5,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
-import one from "../../public/doodle.jpg";
+import seven from "../../public/construction.jpg";
+import one from "../../public/horn.jpg";
 import three from "../../public/cape.jpg";
-import four from "../../public/ramen.jpg";
+import four from "../../public/egg.jpg";
 import five from "../../public/raincoat.jpg";
 import six from "../../public/hooded.jpg";
-import seven from "../../public/construction.jpg";
 
 export default function Carousel() {
 	const images = [
