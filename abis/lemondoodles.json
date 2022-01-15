@@ -121,7 +121,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "_metadatLocked",
+		"name": "_metadataLocked",
 		"outputs": [
 			{
 				"internalType": "bool",

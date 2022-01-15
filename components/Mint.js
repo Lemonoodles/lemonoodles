@@ -3,17 +3,27 @@ import Button from './prebuilt/Button';
 import abi from '../abis/lemondoodles.json';
 import Web3 from 'web3';
 
+const TARGET_CHAIN_ID = 4;
+const CONTRACT_ADDRESS = '0x33A355eBb7561df09Bce367054190F44D2672DF6';
+const WHITELIST_API = 'https://lemondoodles-whitelist.herokuapp.com/api/whitelist';
+
 const readOnlyWeb3 = new Web3(`https://${TARGET_CHAIN_ID === 4 ? 'rinkeby' : 'mainnet'}.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`);
 const web3 = new Web3();
 const { toBN } = readOnlyWeb3.utils;
 
-const TARGET_CHAIN_ID = 4;
-const CONTRACT_ADDRESS = '0x33A355eBb7561df09Bce367054190F44D2672DF6';
-const WHITELIST_API = 'https://lemondoodles-whitelist.herokuapp.com/api/whitelist';
 const PRICE_PER_MINT = toBN('35').mul(toBN(10).pow(toBN(15)));
 
 const ro_contract = new readOnlyWeb3.eth.Contract(abi, CONTRACT_ADDRESS);
 const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+
+const switchChainRequestData = {
+	method: 'wallet_switchEthereumChain',
+	params: [
+		{
+			chainId: `0x${TARGET_CHAIN_ID.toString(16)}`,
+		},
+	],
+};
 
 export default function Mint() {
 	const [publicActive, setPublicActive] = useState(false);
@@ -24,17 +34,6 @@ export default function Mint() {
 
 	const maxPublicMint = 10;
 
-	const updateWhitelist = async (address) => {
-		if (!address) return;
-		const response = await fetch(`${WHITELIST_API}?address=${address}`, {
-			method: 'GET',
-		});
-		if (response.ok) {
-			setWhitelistData(await response.json());
-			return;
-		} else setWhitelistData({});
-	};
-
 	useEffect(() => {
 		if (window.ethereum) {
 			web3.setProvider(window.ethereum);
@@ -44,21 +43,52 @@ export default function Mint() {
 			});
 		}
 		async function setup() {
-			// const publicSaleState = ro_contract.methods.publicSaleState().call();
-			// const preSaleState = ro_contract.methods.whitelistSaleState().call();
-			// setPublicActive(publicSaleState);
-			// setPreActive(preSaleState);
+			const publicSaleState = await ro_contract.methods.publicSaleState().call();
+			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
+			console.log(publicSaleState, preSaleState);
+			setPublicActive(publicSaleState);
+			setPreActive(preSaleState);
 
-			const address = (await web3.eth.getAccounts())[0];
+			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
 			if (address) updateWhitelist(address);
 		}
 		setup();
+		setInterval(setup, 1000);
 	}, []);
+
+	const connect = async () => {
+		if (!window.ethereum) {
+			alert('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
+			return [false, undefined];
+		}
+		return window.ethereum
+			.request(switchChainRequestData)
+			.then(async () => {
+				const address = (await web3.eth.requestAccounts()).at(0);
+				return [true, address];
+			})
+			.catch(() => [false, undefined]);
+	};
+
+	const updateWhitelist = async (address) => {
+		if (!address) return;
+		const response = await fetch(`${WHITELIST_API}?address=${address}`, {
+			method: 'GET',
+		});
+		if (response.ok) {
+			setWhitelistData(await response.json());
+			setMintAmount(whitelistData.maxMints > 0 ? 1 : 0);
+			return;
+		} else {
+			setWhitelistData({ maxMints: 0 });
+			setMintAmount(0);
+		}
+	};
 
 	const maxAmountPublic = (value) => {
 		value = parseInt(value); // To avoid `-`
-		setMintAmount(value);
-		if (value > maxPublicMint || value.length > 3) {
+		setMintAmount(isNaN(value) ? 0 : value);
+		if (value > maxPublicMint) {
 			setMintAmount(maxPublicMint);
 		} else if (value < 0) {
 			setMintAmount(1);
@@ -67,8 +97,8 @@ export default function Mint() {
 
 	const maxAmountPre = (value) => {
 		value = parseInt(value); // To avoid `-`
-		setMintAmount(value);
-		if (value > whitelistData.maxMints || value.length > 3) {
+		setMintAmount(isNaN(value) ? 0 : value);
+		if (value > whitelistData.maxMints) {
 			setMintAmount(whitelistData.maxMints);
 		} else if (value < 0) {
 			setMintAmount(1);
@@ -76,11 +106,40 @@ export default function Mint() {
 	};
 
 	const preSaleMint = async () => {
-		console.log(`Presale mint`);
+		if (!(parseInt(mintAmount) > 0)) return;
+		const { signature, maxMints, checkLemons, checkDoodles, checkChainrunners } = whitelistData;
+		if (maxMints == 0) return;
+
+		const [connected, address] = await connect();
+		if (!connected || !address) return;
+
+		const TX = contract.methods.whitelistMint(mintAmount, maxMints, checkLemons, checkDoodles, checkChainrunners, signature);
+		const params = { from: address, value: toBN(mintAmount).mul(PRICE_PER_MINT) };
+		try {
+			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.3);
+			contract.methods.whitelistMint(mintAmount, maxMints, checkLemons, checkDoodles, checkChainrunners, signature).send({ ...params, gas: gasEstimation });
+		} catch (e) {
+			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
+			alert(errorMessage ?? e?.message);
+			console.error(e);
+		}
 	};
 
 	const publicSaleMint = async () => {
-		console.log(`Public mint`);
+		if (!(parseInt(mintAmount) > 0)) return;
+		const [connected, address] = await connect();
+		if (!connected || !address) return;
+
+		const TX = contract.methods.publicMint(mintAmount);
+		const params = { from: address, value: toBN(mintAmount).mul(PRICE_PER_MINT) };
+		try {
+			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.3);
+			contract.methods.publicMint(mintAmount).send({ ...params, gas: gasEstimation });
+		} catch (e) {
+			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
+			alert(errorMessage ?? e?.message);
+			console.error(e);
+		}
 	};
 
 	return (
