@@ -1,8 +1,8 @@
+import Image from "next/image";
 import Meta from "../components/Meta";
 import Wrapper from "../components/prebuilt/Wrapper";
 import Nav from "../components/prebuilt/Nav";
-import Image from "next/image";
-import Button from "../components/prebuilt/Button";
+import Mint from "../components/Mint";
 import Team from "../components/Team";
 import FAQ from "../components/FAQ";
 import Project from "../components/Project";
@@ -38,7 +38,7 @@ export default function Home() {
 							<p className='mx-auto text-2xl text-center'>
 								7,777 NFTs - 0.035 ETH
 							</p>
-							<Button text='MINTING SOON' />
+							<Mint />
 						</div>
 					</div>
 				</div>
