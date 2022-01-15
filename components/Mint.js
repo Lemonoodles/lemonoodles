@@ -42,18 +42,22 @@ export default function Mint() {
 				if (address) updateWhitelist(address);
 			});
 		}
+
 		async function setup() {
+			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
+			if (address) updateWhitelist(address);
+		}
+
+		async function updateSales() {
 			const publicSaleState = await ro_contract.methods.publicSaleState().call();
 			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
 			console.log(publicSaleState, preSaleState);
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
-
-			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
-			if (address) updateWhitelist(address);
 		}
+		updateSales();
 		setup();
-		setInterval(setup, 1000);
+		setInterval(updateSales, 1000);
 	}, []);
 
 	const connect = async () => {
