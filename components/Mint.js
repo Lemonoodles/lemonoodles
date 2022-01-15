@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import Button from './prebuilt/Button';
-import abi from '../abis/lemondoodles.json';
+import abi from '../abis/lemonoodles.json';
 import Web3 from 'web3';
 
 const TARGET_CHAIN_ID = 4;
 const CONTRACT_ADDRESS = '0x33A355eBb7561df09Bce367054190F44D2672DF6';
-const WHITELIST_API = 'https://lemondoodles-whitelist.herokuapp.com/api/whitelist';
+const WHITELIST_API = 'https://lemonoodles-whitelist.herokuapp.com/api/whitelist';
 
 const readOnlyWeb3 = new Web3(`https://${TARGET_CHAIN_ID === 4 ? 'rinkeby' : 'mainnet'}.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`);
 const web3 = new Web3();
@@ -51,7 +51,6 @@ export default function Mint() {
 		async function updateSales() {
 			const publicSaleState = await ro_contract.methods.publicSaleState().call();
 			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
-			console.log(publicSaleState, preSaleState);
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
 		}
@@ -76,6 +75,7 @@ export default function Mint() {
 
 	const updateWhitelist = async (address) => {
 		if (!address) return;
+		if (publicActive) return;
 		const response = await fetch(`${WHITELIST_API}?address=${address}`, {
 			method: 'GET',
 		});

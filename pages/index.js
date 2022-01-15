@@ -16,28 +16,23 @@ import logo from "../public/logo.png";
 export default function Home() {
 	return (
 		<>
-			<Meta
-				title='LemonNoodles - 7,777 Supply'
-				desc='7,777 LemonNoodles on the ETH chain'
-			/>
+			<Meta title="Lemonoodles - 7,777 Supply" desc="7,777 Lemonoodles on the ETH chain" />
 			<Lemonbg />
-			<Nav position='fixed' />
-			<div className='md:py-0 container px-8 py-32'>
-				<div className='md:grid-cols-2 md:h-screen grid gap-12'>
-					<div className='flex-center flex-col'>
-						<div className='img w-3/4 mx-auto'>
-							<Image src={doodle} alt='Lemon Doodle' />
+			<Nav position="fixed" />
+			<div className="md:py-0 container px-8 py-32">
+				<div className="md:grid-cols-2 md:h-screen grid gap-12">
+					<div className="flex-center flex-col">
+						<div className="img w-3/4 mx-auto">
+							<Image src={doodle} alt="Lemonoodle" />
 						</div>
 					</div>
-					<div className='flex-center flex-col'>
+					<div className="flex-center flex-col">
 						<div>
-							<Image src={logo} alt='Lemon Noodles NFT' />
+							<Image src={logo} alt="Lemonoodles NFT" />
 							{/* <h1 className='font-skrap mb-6 text-6xl text-black'>
 								LEMON NOODLES
 							</h1> */}
-							<p className='mx-auto text-2xl text-center'>
-								7,777 NFTs - 0.035 ETH
-							</p>
+							<p className="mx-auto text-2xl text-center">7,777 NFTs - 0.035 ETH</p>
 							<Mint />
 						</div>
 					</div>
@@ -48,15 +43,15 @@ export default function Home() {
 				<Project />
 			</Wrapper>
 
-			<Wrapper className='bg-lemon'>
+			<Wrapper className="bg-lemon">
 				<Origin />
 			</Wrapper>
 
-			<Wrapper className=''>
+			<Wrapper className="">
 				<Team />
 			</Wrapper>
 
-			<Wrapper className='bg-mint'>
+			<Wrapper className="bg-mint">
 				<FAQ />
 			</Wrapper>
 
