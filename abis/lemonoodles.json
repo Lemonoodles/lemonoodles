@@ -2,21 +2,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "contract IERC721",
-				"name": "lemons_",
-				"type": "address"
-			},
-			{
-				"internalType": "contract IERC721",
-				"name": "doodles_",
-				"type": "address"
-			},
-			{
-				"internalType": "contract IERC721",
-				"name": "chainrunners_",
-				"type": "address"
-			},
-			{
 				"internalType": "string",
 				"name": "baseUri_",
 				"type": "string"
@@ -183,6 +168,13 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "emergencyWithdraw",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -223,6 +215,13 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "lockMetadata",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -540,21 +539,6 @@
 				"internalType": "uint256",
 				"name": "maxMints",
 				"type": "uint256"
-			},
-			{
-				"internalType": "bool",
-				"name": "checkLemons",
-				"type": "bool"
-			},
-			{
-				"internalType": "bool",
-				"name": "checkDoodles",
-				"type": "bool"
-			},
-			{
-				"internalType": "bool",
-				"name": "checkChainrunners",
-				"type": "bool"
 			},
 			{
 				"internalType": "bytes",

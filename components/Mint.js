@@ -111,21 +111,21 @@ export default function Mint() {
 
 	const preSaleMint = async () => {
 		if (!(parseInt(mintAmount) > 0)) return;
-		const { signature, maxMints, checkLemons, checkDoodles, checkChainrunners } = whitelistData;
+		const { signature, maxMints } = whitelistData;
 		if (maxMints == 0) return;
 
 		const [connected, address] = await connect();
 		if (!connected || !address) return;
 
-		const TX = contract.methods.whitelistMint(mintAmount, maxMints, checkLemons, checkDoodles, checkChainrunners, signature);
+		const TX = contract.methods.whitelistMint(mintAmount, maxMints, signature);
 		const params = { from: address, value: toBN(mintAmount).mul(PRICE_PER_MINT) };
 		try {
 			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.3);
-			contract.methods.whitelistMint(mintAmount, maxMints, checkLemons, checkDoodles, checkChainrunners, signature).send({ ...params, gas: gasEstimation });
+			contract.methods.whitelistMint(mintAmount, maxMints, signature).send({ ...params, gas: gasEstimation });
 		} catch (e) {
+			console.error(e);
 			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
 			alert(errorMessage ?? e?.message);
-			console.error(e);
 		}
 	};
 
