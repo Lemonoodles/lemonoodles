@@ -4,7 +4,7 @@ import abi from '../abis/lemonoodles.json';
 import Web3 from 'web3';
 
 const TARGET_CHAIN_ID = 4;
-const CONTRACT_ADDRESS = '0x33A355eBb7561df09Bce367054190F44D2672DF6';
+const CONTRACT_ADDRESS = '0x33D958140885aDf9F9AB5cF3aF2976Ad7c2a0C5D';
 const WHITELIST_API = 'https://lemonoodles-whitelist.herokuapp.com/api/whitelist';
 
 const readOnlyWeb3 = new Web3(`https://${TARGET_CHAIN_ID === 4 ? 'rinkeby' : 'mainnet'}.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`);
@@ -27,7 +27,7 @@ const switchChainRequestData = {
 
 export default function Mint() {
 	const [publicActive, setPublicActive] = useState(false);
-	const [preActive, setPreActive] = useState(true);
+	const [preActive, setPreActive] = useState(false);
 	const [mintAmount, setMintAmount] = useState(1);
 
 	const [whitelistData, setWhitelistData] = useState({});
@@ -137,7 +137,7 @@ export default function Mint() {
 		const TX = contract.methods.publicMint(mintAmount);
 		const params = { from: address, value: toBN(mintAmount).mul(PRICE_PER_MINT) };
 		try {
-			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.3);
+			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.5);
 			contract.methods.publicMint(mintAmount).send({ ...params, gas: gasEstimation });
 		} catch (e) {
 			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
