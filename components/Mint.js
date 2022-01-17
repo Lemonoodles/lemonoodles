@@ -33,7 +33,7 @@ const switchChainRequestData = {
 };
 
 export default function Mint() {
-	const [publicActive, setPublicActive] = useState(false);
+	const [publicActive, setPublicActive] = useState(true);
 	const [preActive, setPreActive] = useState(false);
 	const [mintAmount, setMintAmount] = useState(1);
 
@@ -44,42 +44,31 @@ export default function Mint() {
 	useEffect(() => {
 		if (window.ethereum) {
 			web3.setProvider(window.ethereum);
-			window.ethereum.on(
-				"accountsChanged",
-				function handleAccountsChange(addresses) {
-					const address = addresses[0];
-					if (address) updateWhitelist(address);
-				}
-			);
+			window.ethereum.on('accountsChanged', function handleAccountsChange(addresses) {
+				const address = addresses[0];
+				if (address) updateWhitelist(address);
+			});
 		}
 
 		async function setup() {
-			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(
-				0
-			);
+			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
 			if (address) updateWhitelist(address);
 		}
 
 		async function updateSales() {
-			const publicSaleState = await ro_contract.methods
-				.publicSaleState()
-				.call();
-			const preSaleState = await ro_contract.methods
-				.whitelistSaleState()
-				.call();
+			const publicSaleState = await ro_contract.methods.publicSaleState().call();
+			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
 		}
-		updateSales();
+		// updateSales();
 		setup();
-		setInterval(updateSales, 1000);
+		// setInterval(updateSales, 1000);
 	}, []);
 
 	const connect = async () => {
 		if (!window.ethereum) {
-			toast.error(
-				"You need to use a web3 enabled browser or an extension that adds web3 functionality!"
-			);
+			toast.error('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
 			return [false, undefined];
 		}
 		return window.ethereum
@@ -95,7 +84,7 @@ export default function Mint() {
 		if (!address) return;
 		if (publicActive) return;
 		const response = await fetch(`${WHITELIST_API}?address=${address}`, {
-			method: "GET",
+			method: 'GET',
 		});
 		if (response.ok) {
 			setWhitelistData(await response.json());
@@ -142,13 +131,11 @@ export default function Mint() {
 		};
 		try {
 			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.3);
-			contract.methods
-				.whitelistMint(mintAmount, maxMints, signature)
-				.send({ ...params, gas: gasEstimation });
+			contract.methods.whitelistMint(mintAmount, maxMints, signature).send({ ...params, gas: gasEstimation });
 		} catch (e) {
 			console.error(e);
 			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
-			toast.error(errorMessage ?? e?.message);
+			toast.error(errorMessage?.at(0) ?? e);
 		}
 	};
 
@@ -164,12 +151,10 @@ export default function Mint() {
 		};
 		try {
 			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.5);
-			contract.methods
-				.publicMint(mintAmount)
-				.send({ ...params, gas: gasEstimation });
+			contract.methods.publicMint(mintAmount).send({ ...params, gas: gasEstimation });
 		} catch (e) {
 			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
-			toast.error(errorMessage ?? e?.message);
+			toast.error(errorMessage?.at(0) ?? e);
 			console.error(e);
 		}
 	};
