@@ -46,29 +46,22 @@ export default function Mint() {
 	useEffect(() => {
 		if (window.ethereum) {
 			web3.setProvider(window.ethereum);
-			window.ethereum.on(
-				"accountsChanged",
-				function handleAccountsChange(addresses) {
-					const address = addresses[0];
-					updateWhitelist(address);
-				}
-			);
+			window.ethereum.on('accountsChanged', function handleAccountsChange(addresses) {
+				const address = addresses[0];
+				updateWhitelist(address);
+			});
 		}
 
 		async function setup() {
-			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(
-				0
-			);
+			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
 			updateWhitelist(address);
 		}
 
 		async function updateSales() {
-			const publicSaleState = await ro_contract.methods
-				.publicSaleState()
-				.call();
-			const preSaleState = await ro_contract.methods
-				.whitelistSaleState()
-				.call();
+			const totalSupply = await ro_contract.methods.totalSupply().call();
+			const publicSaleState = await ro_contract.methods.publicSaleState().call();
+			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
+			setTotalMinted(totalSupply);
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
 		}
@@ -79,9 +72,7 @@ export default function Mint() {
 
 	const connect = async () => {
 		if (!window.ethereum) {
-			toast.error(
-				"You need to use a web3 enabled browser or an extension that adds web3 functionality!"
-			);
+			toast.error('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
 			return [false, undefined];
 		}
 		return window.ethereum
@@ -98,7 +89,7 @@ export default function Mint() {
 		setAddress(address);
 		if (publicActive) return;
 		const response = await fetch(`${WHITELIST_API}?address=${address}`, {
-			method: "GET",
+			method: 'GET',
 		});
 		if (response.ok) {
 			setWhitelistData(await response.json());
@@ -145,9 +136,7 @@ export default function Mint() {
 		};
 		try {
 			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.3);
-			contract.methods
-				.whitelistMint(mintAmount, maxMints, signature)
-				.send({ ...params, gas: gasEstimation });
+			contract.methods.whitelistMint(mintAmount, maxMints, signature).send({ ...params, gas: gasEstimation });
 		} catch (e) {
 			console.error(e);
 			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
@@ -167,9 +156,7 @@ export default function Mint() {
 		};
 		try {
 			const gasEstimation = Math.floor((await TX.estimateGas(params)) * 1.5);
-			contract.methods
-				.publicMint(mintAmount)
-				.send({ ...params, gas: gasEstimation });
+			contract.methods.publicMint(mintAmount).send({ ...params, gas: gasEstimation });
 		} catch (e) {
 			const errorMessage = e.toString().match(/execution reverted: [a-z ]+/i);
 			toast.error(errorMessage ?? e?.message);
@@ -181,88 +168,76 @@ export default function Mint() {
 		<>
 			{address === undefined ? (
 				<>
-					<Button onClick={connect} text='Connect Wallet' />
+					<Button onClick={connect} text="Connect Wallet" />
 				</>
 			) : (
 				<>
 					{publicActive ? (
 						<>
-							<div className='md:grid-cols-2 grid gap-4'>
-								<div className='flex-center relative flex-col'>
-									<div className='bg-yellow-400 shadow'></div>
+							<div className="md:grid-cols-2 grid gap-4">
+								<div className="flex-center relative flex-col">
+									<div className="bg-yellow-400 shadow"></div>
 									<input
-										className='bg-lemon font-mont rounded-xl relative w-full h-12 text-2xl font-bold text-center text-black border-2 border-black border-solid'
-										name='Public Sale'
-										type='number'
-										min='1'
+										className="bg-lemon font-mont rounded-xl relative w-full h-12 text-2xl font-bold text-center text-black border-2 border-black border-solid"
+										name="Public Sale"
+										type="number"
+										min="1"
 										max={maxPublicMint}
-										maxLength='2'
+										maxLength="2"
 										onChange={(e) => maxAmountPublic(e.target.value)}
-										defaultValue='1'
+										defaultValue="1"
 										value={mintAmount}
 									/>
 								</div>
-								<div className='w-full'>
-									<Button onClick={publicSaleMint} text='MINT' />
+								<div className="w-full">
+									<Button onClick={publicSaleMint} text="MINT" />
 								</div>
 							</div>
-							<div className='flex-center md:flex-row flex-col gap-4 mt-6'>
-								<h2 className='outline-text md:!mb-0 !mb-2'>
-									<span className='text-lemon'>
-										{(0.035 * mintAmount).toFixed(3)}
-									</span>{" "}
-									ETH
+							<div className="flex-center md:flex-row flex-col gap-4 mt-6">
+								<h2 className="outline-text md:!mb-0 !mb-2">
+									<span className="text-lemon">{(0.035 * mintAmount).toFixed(3)}</span> ETH
 								</h2>
-								<h2 className='outline-text'>
-									<span className='text-mint'>{totalMinted}</span>/
-									<span className='text-mint'>7,777</span> Minted
+								<h2 className="outline-text">
+									<span className="text-mint">{totalMinted}</span>/<span className="text-mint">7,777</span> Minted
 								</h2>
 							</div>
-							<div className='flex-center flex-col mt-6'>
-								<p className='outline-text font-skrap !text-4xl uppercase'>
-									Max Mints Per Transaction are {maxPublicMint}
-								</p>
+							<div className="flex-center flex-col mt-6">
+								<p className="outline-text font-skrap !text-4xl uppercase">Max Mints Per Transaction are {maxPublicMint}</p>
 							</div>
 						</>
 					) : preActive ? (
 						<>
-							<div className='md:grid-cols-2 grid gap-4 pt-6'>
-								<div className='flex-center relative flex-col'>
-									<div className='bg-yellow-400 shadow'></div>
+							<div className="md:grid-cols-2 grid gap-4 pt-6">
+								<div className="flex-center relative flex-col">
+									<div className="bg-yellow-400 shadow"></div>
 									<input
-										className='bg-lemon font-mont rounded-xl relative w-full h-12 text-2xl font-bold text-center text-black border-2 border-black border-solid'
-										name='Pre-Sale'
-										type='number'
-										min='1'
+										className="bg-lemon font-mont rounded-xl relative w-full h-12 text-2xl font-bold text-center text-black border-2 border-black border-solid"
+										name="Pre-Sale"
+										type="number"
+										min="1"
 										max={whitelistData.maxMints}
-										maxLength='2'
+										maxLength="2"
 										onChange={(e) => maxAmountPre(e.target.value)}
-										defaultValue='1'
+										defaultValue="1"
 										value={mintAmount}
 									/>
 								</div>
-								<div className='w-full'>
-									<Button onClick={preSaleMint} text='MINT' />
+								<div className="w-full">
+									<Button onClick={preSaleMint} text="MINT" />
 								</div>
 							</div>
-							<div className='flex-center md:flex-row flex-col gap-4 mt-6'>
-								<h2 className='outline-text md:!mb-0 !mb-2'>
-									<span className='text-lemon'>
-										{(0.035 * mintAmount).toFixed(3)}
-									</span>{" "}
-									ETH
+							<div className="flex-center md:flex-row flex-col gap-4 mt-6">
+								<h2 className="outline-text md:!mb-0 !mb-2">
+									<span className="text-lemon">{(0.035 * mintAmount).toFixed(3)}</span> ETH
 								</h2>
-								<h2 className='outline-text'>
-									<span className='text-mint'>{totalMinted}</span>/
-									<span className='text-mint'>7,777</span> Minted
+								<h2 className="outline-text">
+									<span className="text-mint">{totalMinted}</span>/<span className="text-mint">7,777</span> Minted
 								</h2>
 							</div>
-							<div className='flex-center flex-col mt-6'>
-								<p className='outline-text font-skrap !text-4xl uppercase'>
+							<div className="flex-center flex-col mt-6">
+								<p className="outline-text font-skrap !text-4xl uppercase">
 									{whitelistData.maxMints > 0
-										? `Your Max Mint${
-												whitelistData.maxMints > 1 ? "s" : ""
-										  } are ${whitelistData.maxMints}`
+										? `Your Max Mint${whitelistData.maxMints > 1 ? 's' : ''} are ${whitelistData.maxMints}`
 										: `You are not whitelisted!`}
 								</p>
 							</div>
@@ -270,21 +245,13 @@ export default function Mint() {
 					) : (
 						<>
 							<div>
-								<Button text='Minting Coming Soon' />
+								<Button text="Minting Is Finished!" />
 							</div>
 						</>
 					)}
 				</>
 			)}
-			<ToastContainer
-				position='bottom-right'
-				autoClose={5000}
-				newestOnTop={false}
-				hideProgressBar={false}
-				pauseOnHover
-				closeOnClick
-				theme='colored'
-			/>
+			<ToastContainer position="bottom-right" autoClose={5000} newestOnTop={false} hideProgressBar={false} pauseOnHover closeOnClick theme="colored" />
 		</>
 	);
 }
