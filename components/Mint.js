@@ -36,7 +36,7 @@ export default function Mint() {
 	const [publicActive, setPublicActive] = useState(false);
 	const [preActive, setPreActive] = useState(false);
 	const [mintAmount, setMintAmount] = useState(1);
-
+	const [address, setAddress] = useState(undefined);
 	const [whitelistData, setWhitelistData] = useState({});
 
 	const maxPublicMint = 10;
@@ -44,29 +44,20 @@ export default function Mint() {
 	useEffect(() => {
 		if (window.ethereum) {
 			web3.setProvider(window.ethereum);
-			window.ethereum.on(
-				"accountsChanged",
-				function handleAccountsChange(addresses) {
-					const address = addresses[0];
-					if (address) updateWhitelist(address);
-				}
-			);
+			window.ethereum.on('accountsChanged', function handleAccountsChange(addresses) {
+				const address = addresses[0];
+				updateWhitelist(address);
+			});
 		}
 
 		async function setup() {
-			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(
-				0
-			);
-			if (address) updateWhitelist(address);
+			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
+			updateWhitelist(address);
 		}
 
 		async function updateSales() {
-			const publicSaleState = await ro_contract.methods
-				.publicSaleState()
-				.call();
-			const preSaleState = await ro_contract.methods
-				.whitelistSaleState()
-				.call();
+			const publicSaleState = await ro_contract.methods.publicSaleState().call();
+			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
 		}
@@ -77,9 +68,7 @@ export default function Mint() {
 
 	const connect = async () => {
 		if (!window.ethereum) {
-			toast.error(
-				"You need to use a web3 enabled browser or an extension that adds web3 functionality!"
-			);
+			toast.error('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
 			return [false, undefined];
 		}
 		return window.ethereum
@@ -92,10 +81,11 @@ export default function Mint() {
 	};
 
 	const updateWhitelist = async (address) => {
-		if (!address) return;
+		if (!address) return setAddress(undefined);
+		setAddress(address);
 		if (publicActive) return;
 		const response = await fetch(`${WHITELIST_API}?address=${address}`, {
-			method: "GET",
+			method: 'GET',
 		});
 		if (response.ok) {
 			setWhitelistData(await response.json());
