@@ -3,7 +3,7 @@ import Button from './prebuilt/Button';
 import abi from '../abis/lemonoodles.json';
 import Web3 from 'web3';
 
-const TARGET_CHAIN_ID = 4;
+const TARGET_CHAIN_ID = 1;
 const CONTRACT_ADDRESS = '0x33D958140885aDf9F9AB5cF3aF2976Ad7c2a0C5D';
 const WHITELIST_API = 'https://lemonoodles-whitelist.herokuapp.com/api/whitelist';
 
@@ -11,7 +11,7 @@ const readOnlyWeb3 = new Web3(`https://${TARGET_CHAIN_ID === 4 ? 'rinkeby' : 'ma
 const web3 = new Web3();
 const { toBN } = readOnlyWeb3.utils;
 
-const PRICE_PER_MINT = toBN('35').mul(toBN(10).pow(toBN(15)));
+const PRICE_PER_MINT = toBN('35000000000000000');
 
 const ro_contract = new readOnlyWeb3.eth.Contract(abi, CONTRACT_ADDRESS);
 const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
