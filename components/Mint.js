@@ -12,7 +12,7 @@ const WHITELIST_API =
 
 const readOnlyWeb3 = new Web3(
 	`https://${
-		TARGET_CHAIN_ID === 1 ? "rinkeby" : "mainnet"
+		TARGET_CHAIN_ID === 4 ? "rinkeby" : "mainnet"
 	}.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`
 );
 const web3 = new Web3();
@@ -39,25 +39,36 @@ export default function Mint() {
 	const [address, setAddress] = useState(undefined);
 	const [whitelistData, setWhitelistData] = useState({});
 
+	const [totalMinted, setTotalMinted] = useState(0);
+
 	const maxPublicMint = 10;
 
 	useEffect(() => {
 		if (window.ethereum) {
 			web3.setProvider(window.ethereum);
-			window.ethereum.on('accountsChanged', function handleAccountsChange(addresses) {
-				const address = addresses[0];
-				updateWhitelist(address);
-			});
+			window.ethereum.on(
+				"accountsChanged",
+				function handleAccountsChange(addresses) {
+					const address = addresses[0];
+					updateWhitelist(address);
+				}
+			);
 		}
 
 		async function setup() {
-			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
+			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(
+				0
+			);
 			updateWhitelist(address);
 		}
 
 		async function updateSales() {
-			const publicSaleState = await ro_contract.methods.publicSaleState().call();
-			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
+			const publicSaleState = await ro_contract.methods
+				.publicSaleState()
+				.call();
+			const preSaleState = await ro_contract.methods
+				.whitelistSaleState()
+				.call();
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
 		}
@@ -68,7 +79,9 @@ export default function Mint() {
 
 	const connect = async () => {
 		if (!window.ethereum) {
-			toast.error('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
+			toast.error(
+				"You need to use a web3 enabled browser or an extension that adds web3 functionality!"
+			);
 			return [false, undefined];
 		}
 		return window.ethereum
@@ -85,7 +98,7 @@ export default function Mint() {
 		setAddress(address);
 		if (publicActive) return;
 		const response = await fetch(`${WHITELIST_API}?address=${address}`, {
-			method: 'GET',
+			method: "GET",
 		});
 		if (response.ok) {
 			setWhitelistData(await response.json());
@@ -168,6 +181,9 @@ export default function Mint() {
 		<>
 			{publicActive ? (
 				<>
+					<div className=''>
+						<p>{totalMinted}/7,777</p>
+					</div>
 					<div className='md:grid-cols-2 grid gap-4'>
 						<div className='flex-center relative flex-col'>
 							<div className='bg-yellow-400 shadow'></div>
@@ -195,7 +211,7 @@ export default function Mint() {
 				</>
 			) : preActive ? (
 				<>
-					<div className='md:grid-cols-2 grid gap-4'>
+					<div className='md:grid-cols-2 grid gap-4 pt-6'>
 						<div className='flex-center relative flex-col'>
 							<div className='bg-yellow-400 shadow'></div>
 							<input
@@ -213,6 +229,18 @@ export default function Mint() {
 						<div className='w-full'>
 							<Button onClick={preSaleMint} text='MINT' />
 						</div>
+					</div>
+					<div className='flex-center flex-col mt-6'>
+						<h2 className='outline-text !mb-2'>
+							<span className='text-lemon'>
+								{(0.035 * mintAmount).toFixed(3)}
+							</span>{" "}
+							ETH
+						</h2>
+						<h2 className='outline-text'>
+							<span className='text-mint'>{totalMinted}</span>/
+							<span className='text-mint'>7,777</span> Minted
+						</h2>
 					</div>
 					<div className='flex-center flex-col mt-6'>
 						<p className='font-bold uppercase'>

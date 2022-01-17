@@ -31,12 +31,11 @@ export default function Home() {
 					</div>
 					<div className='flex-center flex-col'>
 						<div>
-							<Image src={logo} alt='Lemonoodles NFT' />
-							{/* <h1 className='font-skrap mb-6 text-6xl text-black'>
-								LEMON NOODLES
-							</h1> */}
-							<p className='mx-auto text-2xl text-center'>
-								7,777 NFTs - 0.035 ETH
+							<div className='max-w-max mx-auto'>
+								<Image src={logo} alt='Lemonoodles NFT' />
+							</div>
+							<p className='outline-text font-skrap mx-auto text-6xl text-center'>
+								7,777 NFTs / 0.035 ETH
 							</p>
 							<Mint />
 						</div>
