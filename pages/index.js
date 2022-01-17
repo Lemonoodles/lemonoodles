@@ -34,9 +34,9 @@ export default function Home() {
 							<div className='max-w-max mx-auto'>
 								<Image src={logo} alt='Lemonoodles NFT' />
 							</div>
-							{/* <p className='outline-text font-skrap mx-auto text-6xl text-center'>
-								7,777 NFTs / 0.035 ETH
-							</p> */}
+							<p className='outline-text font-skrap mx-auto !mb-6 text-6xl text-center'>
+								0.035 ETH Each
+							</p>
 							<Mint />
 						</div>
 					</div>
