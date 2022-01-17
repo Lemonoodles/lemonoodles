@@ -33,7 +33,7 @@ const switchChainRequestData = {
 };
 
 export default function Mint() {
-	const [publicActive, setPublicActive] = useState(true);
+	const [publicActive, setPublicActive] = useState(false);
 	const [preActive, setPreActive] = useState(false);
 	const [mintAmount, setMintAmount] = useState(1);
 
@@ -61,9 +61,9 @@ export default function Mint() {
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
 		}
-		// updateSales();
+		updateSales();
 		setup();
-		// setInterval(updateSales, 1000);
+		setInterval(updateSales, 1000);
 	}, []);
 
 	const connect = async () => {
