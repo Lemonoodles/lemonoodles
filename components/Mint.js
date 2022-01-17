@@ -12,7 +12,7 @@ const WHITELIST_API =
 
 const readOnlyWeb3 = new Web3(
 	`https://${
-		TARGET_CHAIN_ID === 4 ? "rinkeby" : "mainnet"
+		TARGET_CHAIN_ID === 1 ? "rinkeby" : "mainnet"
 	}.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`
 );
 const web3 = new Web3();
