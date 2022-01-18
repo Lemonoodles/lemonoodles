@@ -45,31 +45,24 @@ export default function Mint() {
 
 	useEffect(() => {
 		if (window.ethereum) {
-			web3.setProvider(window.ethereum);
-			window.ethereum.on(
-				"accountsChanged",
-				function handleAccountsChange(addresses) {
-					const address = addresses[0];
-					updateWhitelist(address);
-				}
-			);
+			window.ethereum.on('accountsChanged', function handleAccountsChange(addresses) {
+				const address = addresses[0];
+				updateWhitelist(address);
+			});
 		}
 
 		async function setup() {
-			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(
-				0
-			);
+			if (!window.ethereum) return;
+
+			web3.setProvider(window.ethereum);
+			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
 			updateWhitelist(address);
 		}
 
 		async function updateSales() {
 			const totalSupply = await ro_contract.methods.totalSupply().call();
-			const publicSaleState = await ro_contract.methods
-				.publicSaleState()
-				.call();
-			const preSaleState = await ro_contract.methods
-				.whitelistSaleState()
-				.call();
+			const publicSaleState = await ro_contract.methods.publicSaleState().call();
+			const preSaleState = await ro_contract.methods.whitelistSaleState().call();
 			setTotalMinted(totalSupply);
 			setPublicActive(publicSaleState);
 			setPreActive(preSaleState);
@@ -84,6 +77,7 @@ export default function Mint() {
 			toast.error('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
 			return [false, undefined];
 		}
+		web3.setProvider(window.ethereum);
 		const chainId = await web3.eth.getChainId();
 		if (chainId !== TARGET_CHAIN_ID) {
 			toast.error('You need to connect to the ethereum mainnet!');
