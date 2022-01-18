@@ -65,21 +65,20 @@ export default function Mint() {
 	}, []);
 
 	const connect = async () => {
-		if (!window.ethereum) {
-			toast.error('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
-			return [false, undefined];
-		}
 		try {
+			if (!window.ethereum) {
+				toast.error('You need to use a web3 enabled browser or an extension that adds web3 functionality!');
+				return [false, undefined];
+			}
 			web3.setProvider(window.ethereum);
 			const chainId = await web3.eth.getChainId();
 			if (chainId !== TARGET_CHAIN_ID) {
 				toast.error('You need to connect to the ethereum mainnet!');
 				return [false, undefined];
 			}
-			const address = (await web3.eth.getAccounts().catch(() => undefined))?.at(0);
-			if (address) return [true, address];
-			const accounts = await web3.eth.requestAccounts();
-			return [true, accounts[0]];
+			const [address] = await web3.eth.requestAccounts();
+			updateWhitelist(address);
+			return [true, address];
 		} catch (e) {
 			console.error(e);
 			toast.error(e);
@@ -249,7 +248,9 @@ export default function Mint() {
 							</div>
 							<div className="flex-center flex-col mt-6">
 								<p className="outline-text font-skrap !text-4xl uppercase">
-									{`Your Max Mint${whitelistData.maxMints > 1 ? 's' : ''} are ${whitelistData.maxMints}`}
+									{whitelistData.maxMints > 0
+										? `Your Max Mint${whitelistData.maxMints > 1 ? 's' : ''} are ${whitelistData.maxMints}`
+										: `You are not whitelisted!`}
 								</p>
 							</div>
 						</>
