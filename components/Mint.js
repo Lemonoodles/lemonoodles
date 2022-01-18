@@ -182,9 +182,16 @@ export default function Mint() {
 	return (
 		<>
 			{address === undefined ? (
-				<>
-					<Button onClick={connect} text='Connect Wallet' />
-				</>
+				<div>
+					{/* <Button onClick={connect} text='Connect Wallet' /> */}
+					<div
+						onClick={connect}
+						className='hover:scale-105 relative z-40 transition-all duration-300'
+					>
+						<span className='bg-green-600 shadow'></span>
+						<button className='btn'>Connect Wallet</button>
+					</div>
+				</div>
 			) : (
 				<>
 					{publicActive ? (
