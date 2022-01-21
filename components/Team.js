@@ -15,7 +15,7 @@ const Member = ({ img, name, position }) => {
 				<div className='member lg:w-3/4'>
 					<Image src={img} alt={name} />
 				</div>
-				<h3>{name}</h3>
+				<h3 className='outline-text-hd'>{name}</h3>
 				<p>{position}</p>
 			</div>
 		</>

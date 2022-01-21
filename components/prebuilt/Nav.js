@@ -43,7 +43,10 @@ export default function Nav({ links, position }) {
 				} top-0 left-0 md:flex hidden gap-4 w-full justify-between z-50 py-4 px-6`}
 			>
 				<div className='flex-center max-w-[15rem]'>
-					<Image src={logo} alt='LemonNoodles' />
+					{/* <Image src={logo} alt='LemonNoodles' /> */}
+					<span className='font-skrap lg:text-5xl text-4xl outline-text-hd !text-lemon'>
+						Citrus Kids
+					</span>
 					{/* <span className='font-skrap mb-0 text-4xl'>LEMON NOODLES</span> */}
 				</div>
 				<div className='relative z-10'>

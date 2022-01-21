@@ -6,19 +6,19 @@ import Mint from "../components/Mint";
 import Team from "../components/Team";
 import FAQ from "../components/FAQ";
 import Project from "../components/Project";
-import Origin from "../components/Origin";
+// import Origin from "../components/Origin";
 import Lemonbg from "../components/Lemonbg";
 import Footer from "../components/Footer";
 
-import doodle from "../public/doodle.jpg";
-import logo from "../public/logo.png";
+import five from "../public/five.jpg";
+// import logo from "../public/logo.png";
 
 export default function Home() {
 	return (
 		<>
 			<Meta
-				title='Lemonoodles - 7,777 Supply'
-				desc='7,777 Lemonoodles on the ETH chain'
+				title='Citrus Kids - 7,777 Supply'
+				desc='7,777 Citrus Kids on the ETH chain'
 			/>
 			<Lemonbg />
 			<Nav position='fixed' />
@@ -26,14 +26,15 @@ export default function Home() {
 				<div className='lg:grid-cols-2 lg:h-screen grid gap-12'>
 					<div className='flex-center flex-col'>
 						<div className='img lg:w-3/4 mx-auto'>
-							<Image src={doodle} alt='Lemonoodle' />
+							<Image src={five} alt='Lemonoodle' />
 						</div>
 					</div>
 					<div className='flex-center flex-col'>
 						<div>
-							<div className='max-w-max mx-auto'>
+							<h1 className='outline-text-hd !text-lemon'>Citrus Kids</h1>
+							{/* <div className='max-w-max mx-auto'>
 								<Image src={logo} alt='Lemonoodles NFT' />
-							</div>
+							</div> */}
 							<p className='outline-text font-skrap mx-auto !mb-6 text-6xl text-center'>
 								0.035 ETH Each
 							</p>
@@ -47,11 +48,11 @@ export default function Home() {
 				<Project />
 			</Wrapper>
 
-			<Wrapper className='bg-lemon'>
+			{/* <Wrapper className='bg-lemon'>
 				<Origin />
-			</Wrapper>
+			</Wrapper> */}
 
-			<Wrapper className=''>
+			<Wrapper className='bg-lemon'>
 				<Team />
 			</Wrapper>
 

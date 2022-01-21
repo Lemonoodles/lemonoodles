@@ -5,21 +5,21 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
-import seven from "../../public/construction.jpg";
-import one from "../../public/horn.jpg";
-import three from "../../public/cape.jpg";
-import four from "../../public/egg.jpg";
-import five from "../../public/raincoat.jpg";
-import six from "../../public/hooded.jpg";
+import one from "../../public/one.jpg";
+import two from "../../public/two.jpg";
+import three from "../../public/three.jpg";
+import four from "../../public/four.jpg";
+import five from "../../public/five.jpg";
+import six from "../../public/six.jpg";
 
 export default function Carousel() {
 	const images = [
-		{ img: one, rarity: "Ultra Rare" },
-		{ img: three, rarity: "Ultra Rare" },
-		{ img: four, rarity: "Ultra Rare" },
-		{ img: five, rarity: "Ultra Rare" },
-		{ img: six, rarity: "Ultra Rare" },
-		{ img: seven, rarity: "Ultra Rare" },
+		{ img: one },
+		{ img: two },
+		{ img: three },
+		{ img: four },
+		{ img: five },
+		{ img: six },
 	];
 
 	const NextArrow = ({ onClick }) => {

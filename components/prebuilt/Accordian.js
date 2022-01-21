@@ -11,7 +11,7 @@ export default function Accordian({ children, title }) {
 				<div className='relative'>
 					<div className='bg-yellow-500 shadow'></div>
 					<div className='accordian' onClick={() => setIsOpen(!isOpen)}>
-						<h3 className='mb-0 text-xl font-bold'>{title}</h3>
+						<h3 className='outline-text-hd !mb-0 text-xl font-bold'>{title}</h3>
 						<button
 							className='right-5 absolute'
 							onClick={() => setIsOpen(!isOpen)}

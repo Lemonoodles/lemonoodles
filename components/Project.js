@@ -3,11 +3,11 @@ import Carousel from "./prebuilt/Carousel";
 export default function Project() {
 	return (
 		<>
-			<div className='lg:grid-cols-2 grid grid-cols-1 gap-8'>
+			<div className=' grid grid-cols-1 gap-8'>
 				<div className='flex-center flex-col'>
-					<div className='lg:text-left text-center'>
-						<h2>Project Description</h2>
-						<p>
+					<div className='text-center'>
+						<h2 className='outline-text-hd'>Project Description</h2>
+						<p className=''>
 							Lemonoodles are a NFT collection of unique, programmatically
 							generated frens inspired by Little Lemon Friends and Doodles. We
 							like the lemons and we like the doodles. Turns out they liked each
