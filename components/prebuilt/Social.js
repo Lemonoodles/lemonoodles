@@ -25,7 +25,7 @@ export default function Social() {
 		{
 			name: "twitterLink",
 			icon: <FaTwitter />,
-			url: "https://twitter.com/lemonoodlesnft",
+			url: "https://twitter.com/citruskidsnft",
 		},
 		{
 			name: "instaLink",
@@ -35,7 +35,7 @@ export default function Social() {
 		{
 			name: "discordLink",
 			icon: <FaDiscord />,
-			url: "https://discord.gg/DButygzdkc",
+			url: "https://discord.gg/citruskids",
 		},
 		{
 			name: "openseaLink",
