@@ -4,18 +4,12 @@ export default function FAQ() {
 	return (
 		<>
 			<div>
-				<Accordian title='What are Citrus Kids?'>
-					<p>
-						Citrus Kids are a collection of 7,7777 unique, programmatically
-						generated frens living on the Ethereum Blockchain
-					</p>
-				</Accordian>
 				<Accordian title='How many Citrus Kids are there?'>
 					<p>7,777</p>
 				</Accordian>
 				<Accordian title='Will there be rarity?'>
 					<p>
-						The Citrus Kids are generated from 150 traits with varying degrees
+						The Citrus Kids are generated from 200 traits with varying degrees
 						of rarity. Combinations of those traits and rarities will determine
 						the ranking of each Kid
 					</p>

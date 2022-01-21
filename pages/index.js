@@ -11,7 +11,7 @@ import Lemonbg from "../components/Lemonbg";
 import Footer from "../components/Footer";
 
 import five from "../public/five.jpg";
-// import logo from "../public/logo.png";
+import logo from "../public/citrus-logo.png";
 
 export default function Home() {
 	return (
@@ -25,8 +25,8 @@ export default function Home() {
 			<div className='lg:py-0 container px-8 py-32'>
 				<div className='lg:grid-cols-2 lg:h-screen grid gap-12'>
 					<div className='flex-center flex-col'>
-						<div className='img lg:w-3/4 mx-auto'>
-							<Image src={five} alt='Lemonoodle' />
+						<div className='mx-auto'>
+							<Image src={logo} alt='Lemonoodle' />
 						</div>
 					</div>
 					<div className='flex-center flex-col'>

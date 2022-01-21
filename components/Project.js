@@ -8,13 +8,13 @@ export default function Project() {
 					<div className='text-center'>
 						<h2 className='outline-text-hd'>Project Description</h2>
 						<p className=''>
-							Lemonoodles are a NFT collection of unique, programmatically
-							generated frens inspired by Little Lemon Friends and Doodles. We
-							like the lemons and we like the doodles. Turns out they liked each
-							other too. These are their love children and a story of forbidden
-							love. Note, the art for Lemonoodles is completely our own and is
-							only inspired by and not affiliated with Doodles or Little Lemon
-							Friends.
+							Citrus Kids is an NFT collection of unique, programmatically
+							generated friends with 200 unique traits and over 700 Million
+							potential combinations. Each Citrus Kid grants holders access to a
+							super exclusive, super secret clubhouse where the members decide
+							the direction and future of the project. Citrus Kids believes we
+							are stronger together and aspires to let that shine through in our
+							Community!
 						</p>
 					</div>
 				</div>
