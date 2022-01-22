@@ -23,23 +23,19 @@ export default function Home() {
 			<Lemonbg />
 			<Nav position='fixed' />
 			<div className='lg:py-0 container px-8 py-32'>
-				<div className='lg:grid-cols-2 lg:h-screen grid gap-12'>
-					<div className='flex-center flex-col'>
-						<div className='mx-auto'>
-							<Image src={logo} alt='Lemonoodle' />
-						</div>
+				<div className='flex-center lg:h-screen flex-col'>
+					<div className='mx-auto max-w-[35rem]'>
+						<Image src={logo} alt='Lemonoodle' />
 					</div>
 					<div className='flex-center flex-col'>
-						<div>
-							<h1 className='outline-text-hd !text-lemon'>Citrus Kids</h1>
-							{/* <div className='max-w-max mx-auto'>
+						{/* <h1 className='outline-text-hd !text-lemon'>Citrus Kids</h1> */}
+						{/* <div className='max-w-max mx-auto'>
 								<Image src={logo} alt='Lemonoodles NFT' />
 							</div> */}
-							<p className='outline-text font-skrap mx-auto !mb-6 text-6xl text-center'>
-								0.035 ETH Each
-							</p>
-							<Mint />
-						</div>
+						<p className='outline-text font-skrap mx-auto !mb-6 text-6xl text-center'>
+							0.035 ETH Each
+						</p>
+						<Mint />
 					</div>
 				</div>
 			</div>
