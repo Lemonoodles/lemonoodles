@@ -15,7 +15,7 @@ export default function FAQ() {
 					</p>
 				</Accordian>
 				<Accordian title='Wen Mint?'>
-					<p>Mint will resume Monday, January 24th at 7:30PM EST</p>
+					<p>Mint will resume Monday, January 24th at 7PM EST</p>
 				</Accordian>
 				<Accordian title='How much is a Citrus Kid?'>
 					<p>0.035 ETH + gas</p>
